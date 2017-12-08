@@ -2,13 +2,24 @@ import { clickAddButton, clickPlayButton, clickModalCloseButton, showModal, hide
 
 let queue = []
 
+function findHighestPriorityItem (_arr) {
+  const item = _arr.sort((a, b) => {
+    if (a.priority > b.priority) return -1
+    if (a.priority < b.priority) return 1
+    return 0
+  })[0]
+  const index = _arr.findIndex(_item => _item === item)
+  return { index, item }
+}
+
 async function playQueue() {
   while (true) {
-    const { closePromise, value } = queue[0]
+    const { index, item } = findHighestPriorityItem(queue)
+    const { closePromise, value } = item
     await showModal(value)
     await closePromise()
     await hideModal()
-    queue.shift()
+    queue.splice(index, 1)
     if (queue.length === 0) break
   }
 }
@@ -22,8 +33,8 @@ export async function watchPlay() {
 
 export async function watchInput() {
   while (true) {
-    const value = await clickAddButton()
+    const { value, priority } = await clickAddButton()
     const closePromise = clickModalCloseButton()
-    queue.push({ closePromise, value })
+    queue.push({ closePromise, value, priority })
   }
 }

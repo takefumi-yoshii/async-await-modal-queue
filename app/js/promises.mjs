@@ -2,7 +2,9 @@ export function clickAddButton () {
   return new Promise(resolve => {
     document.getElementById('add-button')
       .addEventListener('click', (e) => {
-        resolve(document.getElementById('input-text').value)
+        const value = document.getElementById('input-text').value
+        const priority = document.getElementById('select-priority').value
+        resolve({ value, priority })
       }, { once: true })
   })
 }
