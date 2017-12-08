@@ -16,7 +16,11 @@ async function playQueue() {
 export async function watchPlay() {
   while (true) {
     await clickPlayButton()
-    await playQueue()
+    try {
+      await playQueue()
+    } catch (err) {
+      alert('queue is blank')
+    }
   }
 }
 
