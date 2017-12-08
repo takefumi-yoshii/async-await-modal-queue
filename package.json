@@ -1,0 +1,15 @@
+{
+  "name": "async-await-modal-queue",
+  "version": "1.0.0",
+  "description": "example of async/await modal view queueing.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takefumi-yoshii/async-await-modal-queue.git"
+  },
+  "author": "takefumi-yoshii",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.2"
+  }
+}

@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <title>async/await modal queue</title>
+    <meta charset="UTF-8">
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div>
+      <h1>async/await modal queue</h1>
+      <hr/>
+      <div>
+        <p>1.add modal with message</p>
+        <input id="input-text" type="text" />
+        <button id="add-button">add queue</button>
+      </div>
+      <div>
+        <p>2.play queue</p>
+        <button id="play-button">play</button>
+      </div>
+      <div id="modal">
+        <div id="modal-inner">
+          <h2 id="modal-title"></h2>
+          <button id="modal-close-button">close</button>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      import { watchPlay, watchInput } from './js/asyncs.mjs'
+      watchPlay()
+      watchInput()
+    </script>
+  </body>
+</html>
