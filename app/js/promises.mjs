@@ -28,7 +28,7 @@ export function wait (duration = 200) {
   })
 }
 
-export async function openModal (value) {
+export async function showModal (value) {
   document.getElementById('modal-title').innerHTML = value
   document.getElementById('modal').classList.add('show')
   await wait(50) // wait for css animation
@@ -36,7 +36,7 @@ export async function openModal (value) {
   await wait()
 }
 
-export async function closeModal () {
+export async function hideModal () {
   document.getElementById('modal').classList.remove('open')
   await wait()
   document.getElementById('modal').classList.remove('show')
